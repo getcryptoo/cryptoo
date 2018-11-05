@@ -1,0 +1,27 @@
+{
+  "name": "cryptoo",
+  "version": "0.0.1",
+  "description": "pay with crypto currencies",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha -u qunit"
+  },
+  "keywords": [
+    "pay",
+    "bitcoin",
+    "eth",
+    "eos"
+  ],
+  "author": "timqian",
+  "license": "MIT",
+  "dependencies": {
+    "bclient": "^0.1.4",
+    "bcoin": "^1.0.2",
+    "progress": "^2.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}

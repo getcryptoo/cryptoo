@@ -1,0 +1,12 @@
+- [x] config where to store the blockchain data and most importantly the wallet key (bcoin config `prefix`) [*ref*](https://github.com/bcoin-org/bcoin/blob/master/docs/Configuration.md)
+- [x] see syncing process([events](http://bcoin.io/guides/events.html)): `tail -F ~/.bcoin/debug.log | grep (net)`
+- [x] event when coin is accepted: `node.plugins.walletdb.wdb.on('confirmed', ()=>{})`
+- [x] user define blockchain location
+- [x] see chain syncing status
+- [x] get recovery phrase
+- [x] ~~pull out money~~
+- [x] ~~get balance~~
+- [x] prevent user from expose bcoin api publically(secret)
+
+- [ ] doc
+- [ ] landing page
