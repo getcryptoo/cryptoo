@@ -7,6 +7,5 @@
 - [x] ~~pull out money~~
 - [x] ~~get balance~~
 - [x] prevent user from expose bcoin api publically(secret)
-
-- [ ] doc
-- [ ] landing page
+- [x] doc
+- [x] landing page

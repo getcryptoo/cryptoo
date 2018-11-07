@@ -3,7 +3,7 @@ const Cryptoo = require('../src');
 const cryptoo = new Cryptoo({
   network: 'testnet',
   chainDataFolder: '~/.bcoin',
-  apiKey: 'sample-api-key-e34dc9dff1b8b04c2b678ff7bb1dd02181bfe31b045f77',
+  secret: 'sample-secret-e34dc9dff1b8b04c2b678ff7bb1dd02181bfe31b045f77',
 });
 
 cryptoo.createAddress()

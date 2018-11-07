@@ -9,7 +9,7 @@ class Cryptoo extends EventEmitter {
    * Create Cyptoo instace
    * @constructor
    * @param {Object} options
-   * @param {String} [options.apiKey] apiKey to protect bcoin http endpoints
+   * @param {String} [options.secret] apiKey to protect bcoin http endpoints
    * @param {String} [options.network="main"] default: "main"; bitcoin network: 'main' or 'testnet'
    * @param {String} [options.chainDataFolder="~/.bcoin"]
    *    default: "~/.bcoin"; folder to store bcoin blockchain data
@@ -19,7 +19,7 @@ class Cryptoo extends EventEmitter {
     super();
 
     const {
-      apiKey,
+      secret,
       network = 'main',
       logBcoinLogInConsole = false,
       chainDataFolder = '~/.bcoin',
@@ -32,8 +32,8 @@ class Cryptoo extends EventEmitter {
 
     // Ref: https://github.com/bcoin-org/bcoin/blob/master/docs/Configuration.md
     this.node = new bcoin.SPVNode({
-      apiKey,
       network, // testnet; main;
+      apiKey: secret,
       logConsole: logBcoinLogInConsole,
       prefix: chainDataFolder,
       config: true,
@@ -51,13 +51,13 @@ class Cryptoo extends EventEmitter {
     const walletClient = new WalletClient({
       network: bcoin.Network.get(network).type,
       port: bcoin.Network.get(network).walletPort,
-      apiKey,
+      apiKey: secret,
     });
 
     this.nodeClient = new NodeClient({
       network: bcoin.Network.get(network).type,
       port: bcoin.Network.get(network).rpcPort,
-      apiKey,
+      apiKey: secret,
     });
 
     this.wallet = walletClient.wallet('primary');
@@ -94,7 +94,6 @@ class Cryptoo extends EventEmitter {
     const genesisBlockTime = this.network === 'main' ? 1231006505 : 1296688602;
     const currentTime = Math.floor(Date.now() / 1000);
 
-    let lastProgress;
     this.node.on('connect', async (entry) => {
       const blockTime = entry.time;
       const progress = Math.min(
@@ -102,14 +101,9 @@ class Cryptoo extends EventEmitter {
         (blockTime - genesisBlockTime) / (currentTime - genesisBlockTime - 40 * 60),
       );
 
-      if (lastProgress !== 1) {
-        bar.update(progress, {
-          progress: (progress * 100).toFixed(3),
-        });
-      } else {
-        // bar.terminate();
-      }
-      lastProgress = progress;
+      bar.update(progress, {
+        progress: (progress * 100).toFixed(3),
+      });
     });
 
     this.node.plugins.walletdb.wdb.on('tx', async (wallet, tx) => {
