@@ -47,7 +47,7 @@ new Cryptoo({
 
 ## Real-life examples
 
-- [Cryptoo landing page with bitcoin donation](getcryptoo.com); [[source code]](github.com/getcryptoo/cryptoo-example)
+- [Cryptoo landing page with bitcoin donation](https://getcryptoo.com); [[source code]](https://github.com/getcryptoo/cryptoo-example)
 - TO BE ADDED
 
 ## How does cryptoo work
