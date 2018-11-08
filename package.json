@@ -1,7 +1,12 @@
 {
   "name": "cryptoo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "pay with crypto currencies",
+  "repository": "git://github.com/getcryptoo/cryptoo.git",
+  "homepage": "https://github.com/getcryptoo/cryptoo",
+  "bugs": {
+    "url": "https://github.com/getcryptoo/cryptoo/issues"
+  },
   "main": "src/index.js",
   "scripts": {
     "test": "mocha -u qunit"
