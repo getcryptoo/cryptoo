@@ -2,6 +2,12 @@
 
 Set up your own bitcoin payment system the easy way(with 4 APIs).
 
+## Install
+
+```
+npm install cryptoo
+```
+
 ## Usage
 
 ```js
