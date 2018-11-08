@@ -58,6 +58,7 @@ Bcoin is able to start and mantain bitcoin [SPV node](https://bitcoin.org/en/ope
 
 When `Cryptoo` instance is created, it will start an SPV node and prepare an HD wallet for you.
 
+Depend on your network enviroment, it might take one to severial hours to sync the blockchain data, the blockchain data and wallet info will be stored in `chainDataFolder` you configure.
 ## About Security
 
 1. **Close 8332 port**: for now cryptoo is a wrapper on bcoin, and bcoin will start an http server listening on this port for accessing wallet data, it's recommand to disable 8332 port for external access.

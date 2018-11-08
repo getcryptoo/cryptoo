@@ -2,7 +2,6 @@ const bcoin = require('bcoin');
 const { WalletClient, NodeClient } = require('bclient');
 const EventEmitter = require('events');
 const assert = require('assert');
-const ProgressBar = require('progress');
 
 class Cryptoo extends EventEmitter {
   /**
@@ -77,18 +76,10 @@ class Cryptoo extends EventEmitter {
     // Connect to the network
     await this.node.connect();
 
-    const bar = new ProgressBar('  Syncing blockchain [:bar] :progress%', {
-      complete: '=',
-      incomplete: ' ',
-      width: 20,
-      total: 100,
-    });
 
     const chainInfo = await this.nodeClient.getInfo();
 
-    bar.update(chainInfo.chain.progress, {
-      progress: (chainInfo.chain.progress * 100).toFixed(3),
-    });
+    console.log(`[cryptoo]: syncing blockchain data: ${(chainInfo.chain.progress * 100).toFixed(3)}%`);
 
     // ref: https://bitcointalk.org/index.php?topic=2966580.0
     const genesisBlockTime = this.network === 'main' ? 1231006505 : 1296688602;
@@ -101,9 +92,7 @@ class Cryptoo extends EventEmitter {
         (blockTime - genesisBlockTime) / (currentTime - genesisBlockTime - 40 * 60),
       );
 
-      bar.update(progress, {
-        progress: (progress * 100).toFixed(3),
-      });
+      console.log(`[cryptoo]: syncing blockchain data: ${(progress * 100).toFixed(3)}%`);
     });
 
     this.node.plugins.walletdb.wdb.on('tx', async (wallet, tx) => {

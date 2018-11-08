@@ -1,6 +1,6 @@
 {
   "name": "cryptoo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "pay with crypto currencies",
   "main": "src/index.js",
   "scripts": {
@@ -16,8 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "bclient": "^0.1.4",
-    "bcoin": "^1.0.2",
-    "progress": "^2.0.1"
+    "bcoin": "^1.0.2"
   },
   "devDependencies": {
     "eslint": "^5.8.0",
